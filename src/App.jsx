@@ -1,42 +1,28 @@
-import { Navbar } from "./components/navbar";
 import { Header } from "./components/header";
-import { Title } from "./components/title";
-import { NavItem } from "./components/nav-item";
-import { Avatar } from "./components/avatar";
-import { Text } from "./components/text";
-import { Button } from "./components/button";
-
-const items = [
-  "Pagina Inicial",
-  "Pesquisa",
-  "Explorer",
-  "Reels",
-  "Mensagens",
-  "Notificações",
-  "Criar",
-  "Perfil",
-  "Mais",
-];
+import { Navbar } from "./components/navbar";
+import { Grid, GridItem } from "./ui/grid";
+import { Highlights } from "./components/highlights";
+import { useEffect } from "react";
+import { fetcher } from "./services/index";
 
 function App() {
+  useEffect(() => {
+    const makeRequest = async () => {
+      const response = await fetcher("photos");
+      console.log(response);
+    };
+    makeRequest();
+  }, []);
   return (
-    <>
-      <Navbar>
-        <Title />
-        {items.map((item) => (
-          <NavItem key={item} text={item} />
-        ))}
-      </Navbar>
-      <Header>
-        <Avatar />
-        <Text bold>@adatechbr</Text>
-        <Button>Seguindo</Button>
-        <Button>Enviar mensagem</Button>
-        <Text>211 publicações</Text>
-        <Text>44,2 mil seguidores</Text>
-        <Text>2 seguindo</Text>
-      </Header>
-    </>
+    <Grid>
+      <GridItem>
+        <Navbar />
+      </GridItem>
+      <GridItem>
+        <Header />
+        <Highlights />
+      </GridItem>
+    </Grid>
   );
 }
 
