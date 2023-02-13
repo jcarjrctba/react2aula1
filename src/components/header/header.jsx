@@ -30,7 +30,7 @@ export const Header = (props) => {
             Ada. A Nova Educação
           </TextLink>
           <S.Followers>
-            <Text size="small">Seguido(a) por lorem, ipsum, dolorsitamet</Text>
+            <Text size="small">Seguido(a) por lorem, ipsum, dolor</Text>
           </S.Followers>
         </S.Infos>
       </S.Content>
