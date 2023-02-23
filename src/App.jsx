@@ -1,22 +1,21 @@
-import { Header } from "./components/header";
-import { Navbar } from "./components/navbar";
-import { Grid, GridItem } from "./ui/grid";
-import { Highlights } from "./components/highlights";
-import { Photos } from "./components/photos";
 import React from "react";
+import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { SignUp } from "./pages/signup";
 
 function App() {
+  const [currentPage, setCurrentPage] = React.useState("login");
+  console.log(currentPage);
   return (
-    <Grid>
-      <GridItem>
-        <Navbar />
-      </GridItem>
-      <GridItem>
-        <Header />
-        <Highlights />
-        <Photos />
-      </GridItem>
-    </Grid>
+    <>
+      {currentPage === "login" && (
+        <Login onClickSelectButton={setCurrentPage} />
+      )}
+      {currentPage === "home" && <Home onClickLoginButton={setCurrentPage} />}
+      {currentPage === "signup" && (
+        <SignUp onClickLoginButton={setCurrentPage} />
+      )}
+    </>
   );
 }
 

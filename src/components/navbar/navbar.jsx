@@ -14,6 +14,10 @@ const items = [
 ];
 
 export const Navbar = (props) => {
+  const onClickLoginButtonHandler = () => {
+    props.onClickLoginButton("login");
+  };
+
   return (
     <S.NavbarWrapper>
       <S.Box>
@@ -26,6 +30,7 @@ export const Navbar = (props) => {
           ))}
         </S.Box>
       </S.Box>
+      <NavItem onClick={onClickLoginButtonHandler} text={"Ir para login"} />
       <NavItem text={"Mais"} />
     </S.NavbarWrapper>
   );
