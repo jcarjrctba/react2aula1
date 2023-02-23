@@ -2,17 +2,10 @@ import { Header } from "./components/header";
 import { Navbar } from "./components/navbar";
 import { Grid, GridItem } from "./ui/grid";
 import { Highlights } from "./components/highlights";
-import { useEffect } from "react";
-import { fetcher } from "./services/index";
+import { Photos } from "./components/photos";
+import React from "react";
 
 function App() {
-  useEffect(() => {
-    const makeRequest = async () => {
-      const response = await fetcher("photos");
-      console.log(response);
-    };
-    makeRequest();
-  }, []);
   return (
     <Grid>
       <GridItem>
@@ -21,6 +14,7 @@ function App() {
       <GridItem>
         <Header />
         <Highlights />
+        <Photos />
       </GridItem>
     </Grid>
   );

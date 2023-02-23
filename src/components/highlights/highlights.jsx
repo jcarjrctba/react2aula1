@@ -4,7 +4,8 @@ import * as S from "./styles";
 
 const highlightList = [
   {
-    image: "https://via.placeholder.com/90",
+    image:
+      "https://images.unsplash.com/photo-1676763133978-7cc13647295a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDk5MTR8MHwxfGFsbHwxfHx8fHx8Mnx8MTY3NzA0MDkzNA&ixlib=rb-4.0.3&q=80&w=400",
     text: "Parceiros",
   },
   {
