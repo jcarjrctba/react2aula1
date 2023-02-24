@@ -65,12 +65,9 @@ export const Login = (props) => {
           </InputWrapper>
         </Form>
         <Button
-          onClick={
-            (() => {
-              console.log({ user });
-            },
-            onClickHomeHandler)
-          }
+          onClick={() => {
+            props.onClickSelectButton("home");
+          }}
         >
           Entrar
         </Button>
