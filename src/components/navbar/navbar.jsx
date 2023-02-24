@@ -1,6 +1,8 @@
+import { InstaContext } from "../../App";
 import { NavItem } from "../nav-item";
 import { Title } from "../title";
 import * as S from "./styles";
+import React from "react";
 
 const items = [
   "Página Inicial",
@@ -13,9 +15,10 @@ const items = [
   "Perfil",
 ];
 
-export const Navbar = (props) => {
+export const Navbar = () => {
+  const { pageState, meuDispatch } = React.useContext(InstaContext);
   const onClickLoginButtonHandler = () => {
-    props.onClickLoginButton("login");
+    meuDispatch({ type: "change_current_page", payload: "login" });
   };
 
   return (

@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import { Text, TextLink } from "../ui/text";
 import styled from "styled-components";
 import React from "react";
+import { InstaContext } from "../App";
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,13 +33,15 @@ const InputWrapper = styled.div`
   }
 `;
 
-export const SignUp = (props) => {
+export const SignUp = () => {
+  const { pageState, meuDispatch } = React.useContext(InstaContext);
+  console.log(pageState, "state pela signup");
   const [userId, setUserId] = React.useState("");
   const [fullName, setFullName] = React.useState("");
   const [user, setUser] = React.useState("");
   const [password, setPassword] = React.useState("");
   const onClickLoginHandler = () => {
-    props.onClickLoginButton("login");
+    meuDispatch({ type: "change_current_page", payload: "login" });
   };
 
   const handleChangeUserId = (event) => {

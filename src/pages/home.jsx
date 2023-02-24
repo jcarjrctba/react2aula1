@@ -4,10 +4,10 @@ import { Grid, GridItem } from "../ui/grid";
 import { Highlights } from "../components/highlights";
 import { Photos } from "../components/photos";
 
-export const Home = (props) => (
+export const Home = () => (
   <Grid>
     <GridItem>
-      <Navbar onClickLoginButton={props.onClickLoginButton} />
+      <Navbar />
     </GridItem>
     <GridItem>
       <Header />

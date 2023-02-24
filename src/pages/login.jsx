@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import { Text, TextLink } from "../ui/text";
 import styled from "styled-components";
 import React from "react";
+import { InstaContext } from "../App";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,17 +34,27 @@ const InputWrapper = styled.div`
 `;
 
 export const Login = (props) => {
+  const { meuState, meuDispatch } = React.useContext(InstaContext);
+
   const [user, setUser] = React.useState("");
+  const [pass, setPass] = React.useState("");
   const onClickHomeHandler = () => {
-    props.onClickSelectButton("home");
+    if (pass && user) {
+      meuDispatch({ type: "change_current_page", payload: "home" });
+      meuDispatch({ type: "add_user", payload: { username: user } });
+    }
   };
 
   const onClickSignUpHandler = () => {
-    props.onClickSelectButton("signup");
+    meuDispatch({ type: "change_current_page", payload: "signup" });
   };
 
   const handleChangeUser = (event) => {
     setUser(event.currentTarget.value);
+  };
+
+  const handleChangePass = (event) => {
+    setPass(event.currentTarget.value);
   };
 
   return (
@@ -61,16 +72,15 @@ export const Login = (props) => {
             />
           </InputWrapper>
           <InputWrapper>
-            <input type="password" placeholder="Senha" />
+            <input
+              type="password"
+              onChange={handleChangePass}
+              value={pass}
+              placeholder="Senha"
+            />
           </InputWrapper>
         </Form>
-        <Button
-          onClick={() => {
-            props.onClickSelectButton("home");
-          }}
-        >
-          Entrar
-        </Button>
+        <Button onClick={onClickHomeHandler}>Entrar</Button>
         <TextLink onClick={onClickSignUpHandler}>
           Não tem uma conta? Cadastre-se
         </TextLink>
